@@ -46,6 +46,10 @@ This project comes with the _IMDB Top 1000 Movies_ dataset source from [Kaggle](
 
 Using this dataset we will create the graph and detect communities.
 
+>**Note**: From here on, run all the commands from inside the `src` folder.
+> ```sh
+> cd src/
+
 Run the following command.
 
 ```sh
@@ -77,10 +81,6 @@ There are 100 communities in total with a lot of nodes and relations. Hence, it 
 ### Create Community Summary Reports
 
 Once the community graph is created we need to create summary reports for each community which will contain high-level information about what that community represents.
-
->**Note**: From here on, run all the commands from inside the `src` folder
-> ```sh
-> cd src/
 
 To do this run the following command.
 
