@@ -5,9 +5,8 @@ from transformers import AutoTokenizer
 class MessageManagement:
 
     def __init__(self):
-        self.tokenizer = AutoTokenizer.from_pretrained(
-            "google/gemma-2b-it",
-            token="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")
+        self.tokenizer = AutoTokenizer.from_pretrained("google/gemma-2b-it",
+                                                       token="")
 
     def __count_tokens__(self, content: str):
         return len(self.tokenizer.encode(content)) + 2
