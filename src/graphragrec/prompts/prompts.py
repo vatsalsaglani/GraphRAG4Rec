@@ -7,3 +7,9 @@ class EXTRACT:
 class EMBED:
     COMMUNITY = open("./graphragrec/prompts/embed/community.txt").read()
     COMBINE = open("./graphragrec/prompts/embed/communitycombine.txt").read()
+
+
+class QUERY:
+    MAP = open("./graphragrec/prompts/query/map.txt").read()
+    REDUCE = open("./graphragrec/prompts/query/reduce.txt").read()
+    COMMUNICATE = open("./graphragrec/prompts/query/communicate.txt").read()
