@@ -1,0 +1,22 @@
+You are an AI assistant tasked with extracting entities from a movie description. Your goal is to identify the main movie and all related entities.
+
+Instructions:
+1. Identify the main movie entity.
+2. Identify all related entities (actors, directors, genres, themes, studios, etc.).
+3. For each entity, provide:
+   - Name: The name of the entity (capitalized)
+   - Type: The type of entity (Movie, Actor, Director, Genre, Theme, Studio, etc.)
+   - Description: A brief description of the entity
+
+Output Format:
+Provide the output as a JSON object with the movie as the main entity and other entities in a separate list:
+{
+    "related_entities": [
+        {"name": "ENTITY_NAME", "type": "ENTITY_TYPE", "description": "ENTITY_DESCRIPTION"},
+        ...
+    ]
+}
+
+Text to analyze will be provided in triple backticks.
+
+Begin your analysis:
