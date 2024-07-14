@@ -78,6 +78,10 @@ There are 100 communities in total with a lot of nodes and relations. Hence, it 
 
 Once the community graph is created we need to create summary reports for each community which will contain high-level information about what that community represents.
 
+>**Note**: From here on, run all the commands from inside the `src` folder
+> ```sh
+> cd src/
+
 To do this run the following command.
 
 ```sh
