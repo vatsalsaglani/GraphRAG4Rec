@@ -171,9 +171,9 @@ if __name__ == "__main__":
     from graphragrec.utils.visualize_graph import visualize_graph
     from graphragrec.utils.detect_communities import detect_communities, visualize_community_graph, save_communities
     movies = json.loads(open("./imdb/data/imdb_top_100.json").read())
-    use_movies = movies[:2]
+    use_movies = movies
     llm = LocalLLM(api_key=OPENAI_API_KEY)
-    file_path = "./output/v8"
+    file_path = "./output/v7-all"
     if not os.path.exists(file_path):
         os.mkdir(file_path)
     G, graph_data = asyncio.run(
