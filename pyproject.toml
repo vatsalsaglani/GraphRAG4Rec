@@ -29,6 +29,7 @@ matplotlib = "^3.9.1"
 pyvis = "^0.3.2"
 json-repair = "^0.25.3"
 tqdm = "^4.66.4"
+streamlit = "^1.36.0"
 
 
 [tool.poetry.group.dev.dependencies]
