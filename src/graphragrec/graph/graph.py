@@ -173,11 +173,11 @@ if __name__ == "__main__":
     movies = json.loads(open("./imdb/data/imdb_top_100.json").read())
     use_movies = movies
     llm = LocalLLM(api_key=OPENAI_API_KEY)
-    file_path = "./output/v7-all"
+    file_path = "./output/v9-gpt-4o-mini"
     if not os.path.exists(file_path):
         os.mkdir(file_path)
     G, graph_data = asyncio.run(
-        build_and_save_multi_movie_graph(llm, "gpt-3.5-turbo-0125", use_movies,
+        build_and_save_multi_movie_graph(llm, "gpt-4o-mini", use_movies,
                                          file_path))
     visualize_graph(G, file_path)
     communities = detect_communities(G)

@@ -14,11 +14,11 @@ from graphragrec.embed.community.report import communityReport
 from graphragrec.embed.community.summary import combineCommunityReports
 from graphragrec.utils.usage import calculateUsages
 
-logging.basicConfig(filename='movie_community_embedding_1.log',
+logging.basicConfig(filename='movie_community_embedding_2.log',
                     level=logging.INFO,
                     format='%(asctime)s - %(levelname)s - %(message)s')
 
-encoding = tiktoken.encoding_for_model("gpt-3.5-turbo-0125")
+encoding = tiktoken.encoding_for_model("gpt-4o")
 
 
 def fetchCommunityData(G: nx.Graph, communities: Dict):
@@ -46,11 +46,17 @@ def divideCommunity(community_content: List):
     while index < len(community_content):
         community_batch.append([])
         token_length = 0
-        # print("TOKEN LENGTH: ", token_length)
-        while token_length < 10_000:
+        logging.info(f">>>> INDEX: {index} | TOKEN LENGTH: {token_length}")
+        while token_length < 30_000:
+            logging.info(
+                f">>>>>>>> ITEM TOKENS: {len(encoding.encode(f'{community_content[index]}'))}"
+            )
             token_length += len(encoding.encode(f'{community_content[index]}'))
+            logging.info(
+                f">>>>>>>> INDEX: {index} | CUMMULATIVE TOKEN LENGTH: {token_length}"
+            )
             # print("TOKEN LENGTH: ", token_length)
-            if token_length < 10_000:
+            if token_length < 30_000:
                 community_batch[-1].append(community_content[index])
                 index += 1
             else:
@@ -63,7 +69,11 @@ def divideCommunity(community_content: List):
 def batchCommunities(community_data: Dict):
     communitybatches = {}
     for cid, items in community_data.items():
+        logging.info(f"> COMMUNITY ID: [{cid}]")
         community_batches = divideCommunity(items)
+        logging.info(
+            f"> COMMUNITY ID: [{cid}] | TOTAL BATCHES: [{len(community_batches)}]"
+        )
         communitybatches[cid] = community_batches
     return communitybatches
 
@@ -158,17 +168,20 @@ if __name__ == "__main__":
     import pickle
     import json
     from configs import OPENAI_API_KEY
-    with open("./output/v7-all/graph.gpickle", "rb") as fp:
+    with open("./output/v9-gpt-4o-mini/graph.gpickle", "rb") as fp:
         G = pickle.load(fp)
-    with open("./output/v7-all/communities.json", "r") as fp:
+    with open("./output/v9-gpt-4o-mini/communities.json", "r") as fp:
         communities = json.load(fp)
     community2data = fetchCommunityData(G, communities)
-    with open("./output/v7-all/community-data.json", "w") as fp:
+    print(f"TOTAL COMMUNITIES: {len(list(community2data.keys()))}")
+    with open("./output/v9-gpt-4o-mini/community-data.json", "w") as fp:
         json.dump(community2data, fp, indent=4)
     # commnuity_batches = batchCommunities(community2data)
     # print(json.dumps(commnuity_batches, indent=4))
+    # print(list(community2data.keys()))
+    # batchCommunities(community2data)
     llm = LocalLLM(api_key=OPENAI_API_KEY)
     community_reports, total_usage = asyncio.run(
-        summarizeCommunities(llm, "gpt-3.5-turbo-0125", community2data))
-    with open("./output/v7-all/community-reports.json", "w") as fp:
+        summarizeCommunities(llm, "gpt-4o-mini", community2data))
+    with open("./output/v9-gpt-4o-mini/community-reports.json", "w") as fp:
         json.dump(community_reports, fp, indent=4)
