@@ -7,7 +7,7 @@ from llm.localllm import LocalLLM
 from graphragrec.query.recommend import recommend
 
 batched_communities = json.loads(
-    open("./output/v7-all/batched-community-reports.json").read())
+    open("./output/v9-gpt-4o-mini/batched-community-reports.json").read())
 llm = LocalLLM(api_key=OPENAI_API_KEY)
 
 st.set_page_config(page_title="GraphRAG4Rec", page_icon="🍿")
@@ -24,9 +24,10 @@ def main():
                                key="user_query")
     if st.button("Recommend"):
         user_query = user_query.strip()
-        if len(user_query.split(" ")) > 4:
+        if len(user_query.split(" ")) >= 4:
             recommendation_generator = recommend(llm, user_query,
-                                                 batched_communities)
+                                                 batched_communities,
+                                                 "gpt-4o-mini")
 
             # Create a placeholder for the streaming output
             output_placeholder = st.empty()
