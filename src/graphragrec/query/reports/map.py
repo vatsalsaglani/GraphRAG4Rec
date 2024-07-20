@@ -1,6 +1,7 @@
 import random
 import asyncio
 import time
+import logging
 from typing import List, Dict
 from tqdm.auto import trange
 from llm.localllm import LocalLLM
@@ -26,7 +27,7 @@ async def queryMap(llm: LocalLLM,
             "role": "user",
             "content": message_content
         }]
-        time.sleep(random.choice([0.5, 1, 2]))
+        time.sleep(random.choice([0.5, 1]))
         output, usage = await llm.__function_call__(
             messages,
             default_model,

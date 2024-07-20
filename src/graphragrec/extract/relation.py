@@ -41,7 +41,7 @@ if __name__ == "__main__":
     from configs import OPENAI_API_KEY
     llm = LocalLLM(api_key=OPENAI_API_KEY)
     output = asyncio.run(
-        extractRelations(llm, "gpt-3.5-turbo-0125", [{
+        extractRelations(llm, "gpt-4o-mini", [{
             'name':
             'The Shawshank Redemption',
             'type':

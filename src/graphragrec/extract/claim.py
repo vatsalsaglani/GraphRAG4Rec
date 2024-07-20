@@ -334,6 +334,5 @@ if __name__ == "__main__":
         'strength': 6
     }]
     output = asyncio.run(
-        extractClaims(llm, "gpt-3.5-turbo-0125", movie_overview, entities,
-                      relations))
+        extractClaims(llm, "gpt-4o-mini", movie_overview, entities, relations))
     print(output)

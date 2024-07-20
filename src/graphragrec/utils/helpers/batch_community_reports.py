@@ -51,12 +51,13 @@ def batchCommunityReports(community_report: Dict[str, Dict]):
 
 if __name__ == "__main__":
     community_report = json.loads(
-        open("./output/v7-all/community-reports.json").read())
+        open("./output/v9-gpt-4o-mini/community-reports.json").read())
     community_batches = batchCommunityReports(community_report)
     print(f"TOTAL BATCHES: {len(community_batches)}")
     for ix, batch in enumerate(community_batches):
         print(
             f"BATCH: {ix} has {len(list(batch.keys()))} community reports. | COMMUNITIES: [{', '.join(list(batch.keys()))}]"
         )
-    with open("./output/v7-all/batched-community-reports.json", "w") as fp:
+    with open("./output/v9-gpt-4o-mini/batched-community-reports.json",
+              "w") as fp:
         json.dump(community_batches, fp, indent=4)

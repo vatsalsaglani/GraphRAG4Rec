@@ -18,7 +18,7 @@ async def recommend(llm: LocalLLM,
     mapOutputs, usage = await queryMap(llm,
                                        query,
                                        batched_community_reports,
-                                       max_allowed_concurrency=4,
+                                       max_allowed_concurrency=5,
                                        default_model=default_model)
     usages += [usage]
     queries = list(

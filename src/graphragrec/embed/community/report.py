@@ -630,6 +630,6 @@ if __name__ == "__main__":
     }]
 
     output, usage = asyncio.run(
-        communityReport(llm, "gpt-3.5-turbo-0125", community_data))
+        communityReport(llm, "gpt-4o-mini", community_data))
     print("USAGE: ", usage)
     print(json.dumps(output, indent=4))
