@@ -55,3 +55,5 @@ In your analysis, also consider:
 6. Personal Growth: How might the recommended movies contribute to the user's personal development or expand their worldview?
 
 Incorporate these considerations into your thought process and analysis for each sub-query.
+
+If a community cannot answer the question just provide reduced relevance scores.

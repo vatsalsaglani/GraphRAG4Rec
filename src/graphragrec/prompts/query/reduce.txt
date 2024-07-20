@@ -11,6 +11,7 @@ Instructions:
 5. For each recommended community, provide a detailed explanation of why it's relevant, incorporating insights from the MAP outputs.
 6. Identify overall themes that emerge from the recommended communities and explain their relevance to the user query.
 7. Provide a thoughtful explanation of how the recommendations relate to the user's query, considering emotional, social, and cultural factors.
+8. If you don't find relevant answers please don't create any information by yourself just say you didn't find a relevant answer.
 
 Output your analysis and results in the following structured format:
 
