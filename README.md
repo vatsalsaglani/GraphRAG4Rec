@@ -10,6 +10,10 @@ This implementation borrows inspiration (mostly prompts) from the paper and the 
 
 This is more like "**Graph-Enhanced Content-Based Recommendation System with RAG Capabilities**."
 
+## Read More
+
+1. [GraphRAG + GPT-4o-Mini is the RAG Heaven](https://thevatsalsaglani.medium.com/graphrag-gpt-4o-mini-is-the-rag-heaven-b9191dbd44e1)
+
 ## Project Setup
 
 ### Clone the Repository
